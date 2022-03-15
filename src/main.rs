@@ -2,7 +2,7 @@ fn main() {
     let number = 1;
     let the_str = "Foo";
     let passed = [passing(padded_name, char_vals_id, number, the_str)
-        ,passing(gen_name_from_int, gen_id_from_string, number, the_str)];
+        , passing(gen_name_from_int, gen_id_from_string, number, the_str)];
     println!("{:?}", passed)
 }
 
@@ -20,7 +20,6 @@ fn passing(add_name: impl Fn(i32) -> String, add_id: impl Fn(&str) -> usize, the
     }
 }
 
-//Used
 fn gen_name_from_int(number: i32) -> String {
     match number {
         1 => "Roar".to_string(),
@@ -28,7 +27,6 @@ fn gen_name_from_int(number: i32) -> String {
         _ => "Not sett".to_string()
     }
 }
-
 
 fn gen_id_from_string(str: &str) -> usize {
     str.len()
@@ -38,8 +36,9 @@ fn padded_name(number: i32) -> String {
     format!("{:05}", number)
 }
 
+//Returned value is immutable
 fn char_vals_id(inn: &str) -> usize {
-    let mut count:usize = 0;
+    let mut count: usize = 0;
     for c in inn.chars() {
         count += c.len_utf16()
     };
